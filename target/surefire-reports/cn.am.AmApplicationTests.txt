@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: cn.am.AmApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 5.445 s <<< FAILURE! - in cn.am.AmApplicationTests
+contextLoads(cn.am.AmApplicationTests)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.github.pagehelper.autoconfigure.PageHelperAutoConfiguration] from ClassLoader [sun.misc.Launcher$AppClassLoader@4aa298b7]
+Caused by: java.lang.NoClassDefFoundError: Lorg/springframework/boot/bind/RelaxedPropertyResolver;
+Caused by: java.lang.ClassNotFoundException: org.springframework.boot.bind.RelaxedPropertyResolver
+
