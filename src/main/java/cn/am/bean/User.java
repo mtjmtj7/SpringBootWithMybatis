@@ -3,53 +3,53 @@ package cn.am.bean;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    private String uid;
-    private String uname;
-    private String upassword;
-    private String urealname;
-    private String ucompany;
+    private String id;
+    private String username;
+    private String password;
+    private String realname;
+    private String company;
     private String isadmin;
     private String isdel;
-    private String umore;
+    private String more;
 
-    public String getUid() {
-        return uid;
+    public String getId() {
+        return id;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getUname() {
-        return uname;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUname(String uname) {
-        this.uname = uname;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getUpassword() {
-        return upassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUpassword(String upassword) {
-        this.upassword = upassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getUrealname() {
-        return urealname;
+    public String getRealname() {
+        return realname;
     }
 
-    public void setUrealname(String urealname) {
-        this.urealname = urealname;
+    public void setRealname(String realname) {
+        this.realname = realname;
     }
 
-    public String getUcompany() {
-        return ucompany;
+    public String getCompany() {
+        return company;
     }
 
-    public void setUcompany(String ucompany) {
-        this.ucompany = ucompany;
+    public void setCompany(String company) {
+        this.company = company;
     }
 
     public String getIsadmin() {
@@ -68,26 +68,25 @@ public class User implements Serializable {
         this.isdel = isdel;
     }
 
-    public String getUmore() {
-        return umore;
+    public String getMore() {
+        return more;
     }
 
-    public void setUmore(String umore) {
-        this.umore = umore;
+    public void setMore(String more) {
+        this.more = more;
     }
-
 
     @Override
     public String toString() {
         return "User{" +
-                "uid='" + uid + '\'' +
-                ", uname='" + uname + '\'' +
-                ", upassword='" + upassword + '\'' +
-                ", urealname='" + urealname + '\'' +
-                ", ucompany='" + ucompany + '\'' +
+                "id='" + id + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", realname='" + realname + '\'' +
+                ", company='" + company + '\'' +
                 ", isadmin='" + isadmin + '\'' +
                 ", isdel='" + isdel + '\'' +
-                ", umore='" + umore + '\'' +
+                ", more='" + more + '\'' +
                 '}';
     }
 }

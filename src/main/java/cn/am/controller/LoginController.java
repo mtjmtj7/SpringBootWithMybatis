@@ -15,6 +15,12 @@ public class LoginController {
 
     @Autowired
     private UserService userService;
+
+    /**
+     * 登录验证
+     * @param user
+     * @return
+     */
     @PostMapping("login")
     public AlexJSONResult login(User user){
         User userNow = userService.login(user);

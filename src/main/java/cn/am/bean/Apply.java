@@ -1,6 +1,6 @@
 package cn.am.bean;
 
-public class apply {
+public class Apply {
 
     private String applyid;
     private String project;
@@ -221,7 +221,7 @@ public class apply {
 
     @Override
     public String toString() {
-        return "apply{" +
+        return "Apply{" +
                 "applyid='" + applyid + '\'' +
                 ", project='" + project + '\'' +
                 ", applyname='" + applyname + '\'' +

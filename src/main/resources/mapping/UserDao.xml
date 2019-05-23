@@ -7,4 +7,35 @@
 	<select id="login"  resultType="user" parameterType="user">
 		select * from user where uname=#{uname} and upassword=#{upassword}
 	</select>
+	<!-- 查询该用户所有授权记录 -->
+	<select id="getAllState"  resultMap="allState" parameterType="String">
+		select * from state where uid  = #{uid}
+	</select>
+	<resultMap type="state" id="allState">
+		<id property="sid" column="sid"/>
+		<result property="applyid" column="applyid" />
+		<result property="uid" column="uid" />
+		<result property="aid" column="aid" />
+		<result property="isgrant" column="isgrant" />
+		<result property="grantdate" column="grantdate" />
+		<result property="license" column="license" />
+		<result property="isdel" column="isdel" />
+		<association property="userApplyDetail" select="cn.am.dao.UserDao.selectUserByID"
+					 column="uid">
+		</association>
+		<association property="userRatifyDetail" select="cn.am.dao.UserDao.selectUserByID"
+					 column="aid">
+		</association>
+		<association property="applyDetail" select="cn.am.dao.UserDao.selectApplyByID"
+					 column="applyid">
+		</association>
+	</resultMap>
+	<!-- 按ID查询user -->
+	<select id="selectUserByID"  resultType="user" parameterType="String">
+		select * from user where id  = #{uid}
+	</select>
+	<!-- 按ID查询apply -->
+	<select id="selectApplyByID"  resultType="apply" parameterType="String">
+		select * from apply where applyid  = #{applyid}
+	</select>
 </mapper>

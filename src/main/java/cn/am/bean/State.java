@@ -1,6 +1,6 @@
 package cn.am.bean;
 
-public class state {
+public class State {
 
     private String sid;
     private String applyid;
@@ -10,6 +10,13 @@ public class state {
     private String grantdate;
     private String license;
     private String isdel;
+
+    //申请人
+    private User userApplyDetail;
+    //批准人
+    private User userRatifyDetail;
+    //表详情
+    private Apply applyDetail;
 
     public String getSid() {
         return sid;
@@ -75,9 +82,33 @@ public class state {
         this.isdel = isdel;
     }
 
+    public User getUserApplyDetail() {
+        return userApplyDetail;
+    }
+
+    public void setUserApplyDetail(User userApplyDetail) {
+        this.userApplyDetail = userApplyDetail;
+    }
+
+    public User getUserRatifyDetail() {
+        return userRatifyDetail;
+    }
+
+    public void setUserRatifyDetail(User userRatifyDetail) {
+        this.userRatifyDetail = userRatifyDetail;
+    }
+
+    public Apply getApplyDetail() {
+        return applyDetail;
+    }
+
+    public void setApplyDetail(Apply applyDetail) {
+        this.applyDetail = applyDetail;
+    }
+
     @Override
     public String toString() {
-        return "state{" +
+        return "State{" +
                 "sid='" + sid + '\'' +
                 ", applyid='" + applyid + '\'' +
                 ", uid='" + uid + '\'' +
@@ -86,6 +117,9 @@ public class state {
                 ", grantdate='" + grantdate + '\'' +
                 ", license='" + license + '\'' +
                 ", isdel='" + isdel + '\'' +
+                ", userApplyDetail=" + userApplyDetail +
+                ", userRatifyDetail=" + userRatifyDetail +
+                ", applyDetail=" + applyDetail +
                 '}';
     }
 }
