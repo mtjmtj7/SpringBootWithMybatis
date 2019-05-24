@@ -1,4 +1,4 @@
-###5.23更新
+### 5.23更新
 
 ___
 
@@ -42,3 +42,11 @@ ___
 
       1. 修改state表，状态改为未授权
       2. 修改apply表， 修改begintime（当前时间）和endtime（三个月后）。
+      
+   2. 新建申请
+   
+      新建申请时，传入apply，此时需要用到session中的userNow对象来获取uid。
+   
+      在创建apply时需要创建一个状态state，而state表中需要用到applyid，此时发现mybatis一个巨好用的方法，因为刚才插入了一个apply，此时直接apply.getApplyid()即可获取刚才插入的记录的ID。
+   
+      

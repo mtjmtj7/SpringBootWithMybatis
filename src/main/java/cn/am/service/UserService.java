@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -91,5 +92,37 @@ public class UserService {
      */
     public List<State> getUntreatedState(String uid){
         return userDao.getUntreatedState(uid);
+    }
+
+    /**
+     * 添加新的申请
+     * 1.apply添加记录
+     * 2.状态表添加未授权状态
+     * @param apply
+     * @return
+     */
+    public boolean addNewApply(Apply apply, HttpSession session){
+
+        //获取用户ID
+        User userNow = (User)session.getAttribute("userNow");
+        //apply
+        //记得改
+        //apply.setApplyername(userNow.getRealname());
+        apply.setApplyername("mtjmtj7");
+        int ret1 = userDao.addNewApply(apply);
+        //state
+        State state = new State();
+        state.setApplyid(apply.getApplyid());
+        //记得改
+        //state.setUid(userNow.getId());
+        state.setUid("2");
+        state.setIsgrant("0"); //未授权
+        state.setIsdel("1"); //1是正常
+        int ret2 = userDao.addNewState(state);
+        if(ret1 > 0 && ret2 > 0)
+            return true;
+        else
+            return false;
+
     }
 }

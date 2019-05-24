@@ -6,11 +6,14 @@ import cn.am.service.UserService;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @RestController
+@SessionAttributes("userNow")
 public class LoginController {
 
     @Autowired
@@ -22,10 +25,10 @@ public class LoginController {
      * @return
      */
     @PostMapping("login")
-    public AlexJSONResult login(User user){
+    public AlexJSONResult login(User user, Model model){
         User userNow = userService.login(user);
-        System.out.println(userNow);
         if(userNow != null){
+            model.addAttribute("userNow", userNow);
             return AlexJSONResult.build(200, "查询成功", userNow);
         }
         else

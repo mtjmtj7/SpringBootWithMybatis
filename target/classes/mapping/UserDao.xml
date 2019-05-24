@@ -30,6 +30,61 @@
 					 column="applyid">
 		</association>
 	</resultMap>
+	<!-- 查询该用户已经被授权记录 -->
+	<select id="getAuditedState"  resultMap="allAuditedState" parameterType="String">
+		select * from state where uid  = #{uid} and isgrant=1
+	</select>
+	<resultMap type="state" id="allAuditedState">
+		<id property="sid" column="sid"/>
+		<result property="applyid" column="applyid" />
+		<result property="uid" column="uid" />
+		<result property="aid" column="aid" />
+		<result property="isgrant" column="isgrant" />
+		<result property="grantdate" column="grantdate" />
+		<result property="license" column="license" />
+		<result property="isdel" column="isdel" />
+		<!--		申请人信息-->
+		<association property="userApplyDetail" select="cn.am.dao.UserDao.selectUserByID"
+					 column="uid">
+		</association>
+		<!--		授权人信息-->
+		<association property="userRatifyDetail" select="cn.am.dao.UserDao.selectUserByID"
+					 column="aid">
+		</association>
+		<!--		申请单信息-->
+		<association property="applyDetail" select="cn.am.dao.UserDao.selectApplyByID"
+					 column="applyid">
+		</association>
+
+	</resultMap>
+
+	<!-- 查询该用户未被授权记录 -->
+	<select id="getUntreatedState"  resultMap="allUntreatedState" parameterType="String">
+		select * from state where uid  = #{uid} and isgrant=0
+	</select>
+	<resultMap type="state" id="allUntreatedState">
+		<id property="sid" column="sid"/>
+		<result property="applyid" column="applyid" />
+		<result property="uid" column="uid" />
+		<result property="aid" column="aid" />
+		<result property="isgrant" column="isgrant" />
+		<result property="grantdate" column="grantdate" />
+		<result property="license" column="license" />
+		<result property="isdel" column="isdel" />
+		<!--		申请人信息-->
+		<association property="userApplyDetail" select="cn.am.dao.UserDao.selectUserByID"
+					 column="uid">
+		</association>
+		<!--		授权人信息-->
+		<association property="userRatifyDetail" select="cn.am.dao.UserDao.selectUserByID"
+					 column="aid">
+		</association>
+		<!--		申请单信息-->
+		<association property="applyDetail" select="cn.am.dao.UserDao.selectApplyByID"
+					 column="applyid">
+		</association>
+
+	</resultMap>
 	<!-- 按ID查询user -->
 	<select id="selectUserByID"  resultType="user" parameterType="String">
 		select * from user where id  = #{uid}
@@ -153,4 +208,206 @@
 			where applyid = #{applyid}
 		</if>
 	</update>
+	<!-- 动态添加apply -->
+	<insert id="addNewApply" parameterType="apply" useGeneratedKeys="true" keyProperty="applyid">
+		insert into apply
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="project !=null and project != ''">
+				project,
+			</if>
+			<if test="applyername !=null and applyername != ''">
+				applyername,
+			</if>
+			<if test="softwarename !=null and softwarename != ''">
+				softwarename,
+			</if>
+			<if test="applydate !=null and applydate != ''">
+				applydate,
+			</if>
+			<if test="applyertel !=null and applyertel != ''">
+				applyertel,
+			</if>
+			<if test="grantuser !=null and grantuser != ''">
+				grantuser,
+			</if>
+			<if test="grantuserperson !=null and grantuserperson != ''">
+				grantuserperson,
+			</if>
+			<if test="grantuserpersontel !=null and grantuserpersontel != ''">
+				grantuserpersontel,
+			</if>
+			<if test="grantbegindate !=null and grantbegindate != ''">
+				grantbegindate,
+			</if>
+			<if test="grantenddate !=null and grantenddate != ''">
+				grantenddate,
+			</if>
+			<if test="servertype !=null and servertype != ''">
+				servertype,
+			</if>
+			<if test="serveros !=null and serveros != ''">
+				serveros,
+			</if>
+			<if test="serverip !=null and serverip != ''">
+				serverip,
+			</if>
+			<if test="deploymenttype !=null and deploymenttype != ''">
+				deploymenttype,
+			</if>
+			<if test="granttype !=null and granttype != ''">
+				granttype,
+			</if>
+			<if test="productversion !=null and productversion != ''">
+				productversion,
+			</if>
+			<if test="grantfiletype !=null and grantfiletype != ''">
+				grantfiletype,
+			</if>
+			<if test="usernum !=null and usernum != ''">
+				usernum,
+			</if>
+			<if test="controlnum !=null and controlnum != ''">
+				controlnum,
+			</if>
+			<if test="computenum !=null and computenum != ''">
+				computenum,
+			</if>
+			<if test="shopinstancenum !=null and shopinstancenum != ''">
+				shopinstancenum,
+			</if>
+			<if test="shopappnum !=null and shopappnum != ''">
+				shopappnum,
+			</if>
+			<if test="desktopinstancenum !=null and desktopinstancenum != ''">
+				desktopinstancenum,
+			</if>
+			<if test="desktopcon !=null and desktopcon != ''">
+				desktopcon,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="project !=null and project != ''">
+				 #{project},
+			</if>
+			<if test="applyername !=null and applyername != ''">
+				#{applyername},
+			</if>
+			<if test="softwarename !=null and softwarename != ''">
+				#{softwarename},
+			</if>
+			<if test="applydate !=null and applydate != ''">
+				#{applydate},
+			</if>
+			<if test="applyertel !=null and applyertel != ''">
+				#{applyertel},
+			</if>
+			<if test="grantuser !=null and grantuser != ''">
+				#{grantuser},
+			</if>
+			<if test="grantuserperson !=null and grantuserperson != ''">
+				#{grantuserperson},
+			</if>
+			<if test="grantuserpersontel !=null and grantuserpersontel != ''">
+				#{grantuserpersontel},
+			</if>
+			<if test="grantbegindate !=null and grantbegindate != ''">
+				#{grantbegindate},
+			</if>
+			<if test="grantenddate !=null and grantenddate != ''">
+				#{grantenddate},
+			</if>
+			<if test="servertype !=null and servertype != ''">
+				#{servertype},
+			</if>
+			<if test="serveros !=null and serveros != ''">
+				#{serveros},
+			</if>
+			<if test="serverip !=null and serverip != ''">
+				#{serverip},
+			</if>
+			<if test="deploymenttype !=null and deploymenttype != ''">
+				#{deploymenttype},
+			</if>
+			<if test="granttype !=null and granttype != ''">
+				#{granttype},
+			</if>
+			<if test="productversion !=null and productversion != ''">
+				#{productversion},
+			</if>
+			<if test="grantfiletype !=null and grantfiletype != ''">
+				#{grantfiletype},
+			</if>
+			<if test="usernum !=null and usernum != ''">
+				#{usernum},
+			</if>
+			<if test="controlnum !=null and controlnum != ''">
+				 #{controlnum},
+			</if>
+			<if test="computenum !=null and computenum != ''">
+				 #{computenum},
+			</if>
+			<if test="shopinstancenum !=null and shopinstancenum != ''">
+				 #{shopinstancenum},
+			</if>
+			<if test="shopappnum !=null and shopappnum != ''">
+				 #{shopappnum},
+			</if>
+			<if test="desktopinstancenum !=null and desktopinstancenum != ''">
+				 #{desktopinstancenum},
+			</if>
+			<if test="desktopcon !=null and desktopcon != ''">
+				 #{desktopcon},
+			</if>
+		</trim>
+	</insert>
+	<!-- 动态添加state -->
+	<insert id="addNewState" parameterType="state" useGeneratedKeys="true" keyProperty="sid">
+		insert into state
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="applyid !=null and applyid != ''">
+				applyid,
+			</if>
+			<if test="uid !=null and uid != ''">
+				uid,
+			</if>
+			<if test="aid !=null and aid != ''">
+				aid,
+			</if>
+			<if test="isgrant !=null and isgrant != ''">
+				isgrant,
+			</if>
+			<if test="grantdate !=null and grantdate != ''">
+				grantdate,
+			</if>
+			<if test="license !=null and license != ''">
+				license,
+			</if>
+			<if test="isdel !=null and isdel != ''">
+				isdel,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="applyid !=null and applyid != ''">
+				#{applyid},
+			</if>
+			<if test="uid !=null and uid != ''">
+				#{uid},
+			</if>
+			<if test="aid !=null and aid != ''">
+				#{aid},
+			</if>
+			<if test="isgrant !=null and isgrant != ''">
+				#{isgrant},
+			</if>
+			<if test="grantdate !=null and grantdate != ''">
+				#{grantdate},
+			</if>
+			<if test="license !=null and license != ''">
+				#{license},
+			</if>
+			<if test="isdel !=null and isdel != ''">
+				#{isdel},
+			</if>
+		</trim>
+	</insert>
 </mapper>

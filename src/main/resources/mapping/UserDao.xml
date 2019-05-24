@@ -60,7 +60,7 @@
 
 	<!-- 查询该用户未被授权记录 -->
 	<select id="getUntreatedState"  resultMap="allUntreatedState" parameterType="String">
-		select * from state where uid  = #{uid} and isgrant=1
+		select * from state where uid  = #{uid} and isgrant=0
 	</select>
 	<resultMap type="state" id="allUntreatedState">
 		<id property="sid" column="sid"/>
@@ -208,7 +208,8 @@
 			where applyid = #{applyid}
 		</if>
 	</update>
-	<insert id="addNewApply" parameterType="apply">
+	<!-- 动态添加apply -->
+	<insert id="addNewApply" parameterType="apply" useGeneratedKeys="true" keyProperty="applyid">
 		insert into apply
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="project !=null and project != ''">
@@ -356,6 +357,56 @@
 			</if>
 			<if test="desktopcon !=null and desktopcon != ''">
 				 #{desktopcon},
+			</if>
+		</trim>
+	</insert>
+	<!-- 动态添加state -->
+	<insert id="addNewState" parameterType="state" useGeneratedKeys="true" keyProperty="sid">
+		insert into state
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="applyid !=null and applyid != ''">
+				applyid,
+			</if>
+			<if test="uid !=null and uid != ''">
+				uid,
+			</if>
+			<if test="aid !=null and aid != ''">
+				aid,
+			</if>
+			<if test="isgrant !=null and isgrant != ''">
+				isgrant,
+			</if>
+			<if test="grantdate !=null and grantdate != ''">
+				grantdate,
+			</if>
+			<if test="license !=null and license != ''">
+				license,
+			</if>
+			<if test="isdel !=null and isdel != ''">
+				isdel,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="applyid !=null and applyid != ''">
+				#{applyid},
+			</if>
+			<if test="uid !=null and uid != ''">
+				#{uid},
+			</if>
+			<if test="aid !=null and aid != ''">
+				#{aid},
+			</if>
+			<if test="isgrant !=null and isgrant != ''">
+				#{isgrant},
+			</if>
+			<if test="grantdate !=null and grantdate != ''">
+				#{grantdate},
+			</if>
+			<if test="license !=null and license != ''">
+				#{license},
+			</if>
+			<if test="isdel !=null and isdel != ''">
+				#{isdel},
 			</if>
 		</trim>
 	</insert>

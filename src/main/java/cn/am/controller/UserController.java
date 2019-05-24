@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -65,7 +66,15 @@ public class UserController {
         List<State> list = userService.getUntreatedState(user.getId());
         return AlexJSONResult.build(200, "用户未授权查询成功",list);
     }
-    public AlexJSONResult addNewApply(Apply apply){
 
+    /**
+     * 普通用户申请授权
+     * @param apply
+     * @return
+     */
+    @PostMapping("addNewApply")
+    public AlexJSONResult addNewApply(Apply apply, HttpSession session){
+        userService.addNewApply(apply, session);
+        return AlexJSONResult.ok();
     }
 }
