@@ -4,7 +4,7 @@ public class Apply {
 
     private String applyid;
     private String project;
-    private String applyname;
+    private String applyername;
     private String softwarename;
     private String applydate;
     private String applyertel;
@@ -23,6 +23,7 @@ public class Apply {
     private String usernum;
     private String controlnum;
     private String computenum;
+    private String shopinstancenum;
     private String shopappnum;
     private String desktopinstancenum;
     private String desktopcon;
@@ -43,12 +44,12 @@ public class Apply {
         this.project = project;
     }
 
-    public String getApplyname() {
-        return applyname;
+    public String getApplyername() {
+        return applyername;
     }
 
-    public void setApplyname(String applyname) {
-        this.applyname = applyname;
+    public void setApplyername(String applyername) {
+        this.applyername = applyername;
     }
 
     public String getSoftwarename() {
@@ -195,6 +196,14 @@ public class Apply {
         this.computenum = computenum;
     }
 
+    public String getShopinstancenum() {
+        return shopinstancenum;
+    }
+
+    public void setShopinstancenum(String shopinstancenum) {
+        this.shopinstancenum = shopinstancenum;
+    }
+
     public String getShopappnum() {
         return shopappnum;
     }
@@ -224,7 +233,7 @@ public class Apply {
         return "Apply{" +
                 "applyid='" + applyid + '\'' +
                 ", project='" + project + '\'' +
-                ", applyname='" + applyname + '\'' +
+                ", applyername='" + applyername + '\'' +
                 ", softwarename='" + softwarename + '\'' +
                 ", applydate='" + applydate + '\'' +
                 ", applyertel='" + applyertel + '\'' +
@@ -243,6 +252,7 @@ public class Apply {
                 ", usernum='" + usernum + '\'' +
                 ", controlnum='" + controlnum + '\'' +
                 ", computenum='" + computenum + '\'' +
+                ", shopinstancenum='" + shopinstancenum + '\'' +
                 ", shopappnum='" + shopappnum + '\'' +
                 ", desktopinstancenum='" + desktopinstancenum + '\'' +
                 ", desktopcon='" + desktopcon + '\'' +
