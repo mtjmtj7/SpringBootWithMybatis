@@ -39,4 +39,5 @@ public interface UserDao {
      * @return
      */
     public int addNewState(State state);
+
 }

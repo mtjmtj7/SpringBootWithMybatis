@@ -117,7 +117,7 @@ public class UserService {
         //state.setUid(userNow.getId());
         state.setUid("2");
         state.setIsgrant("0"); //未授权
-        state.setIsdel("1"); //1是正常
+        state.setIsdel("0"); //0是正常
         int ret2 = userDao.addNewState(state);
         if(ret1 > 0 && ret2 > 0)
             return true;
@@ -125,4 +125,5 @@ public class UserService {
             return false;
 
     }
+
 }

@@ -6,6 +6,7 @@ import cn.am.bean.State;
 import cn.am.bean.User;
 import cn.am.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -77,4 +78,5 @@ public class UserController {
         userService.addNewApply(apply, session);
         return AlexJSONResult.ok();
     }
+
 }
