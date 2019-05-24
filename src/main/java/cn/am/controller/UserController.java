@@ -46,7 +46,25 @@ public class UserController {
         else
             return AlexJSONResult.errorMsg("更新失败");
     }
+    /**
+     * 查询被授权记录
+     * @return
+     */
+    @PostMapping("getAuditedState")
+    public AlexJSONResult getAuditedState(User user){
+        List<State> list = userService.getAuditedState(user.getId());
+        return AlexJSONResult.build(200, "用户被授权查询成功",list);
+    }
 
+    /**
+     * 查询未被授权记录
+     * @return
+     */
+    @PostMapping("getUntreatedState")
+    public AlexJSONResult getUntreatedState(User user){
+        List<State> list = userService.getUntreatedState(user.getId());
+        return AlexJSONResult.build(200, "用户未授权查询成功",list);
+    }
     public AlexJSONResult addNewApply(Apply apply){
 
     }

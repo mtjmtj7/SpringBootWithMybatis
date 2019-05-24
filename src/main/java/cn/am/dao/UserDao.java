@@ -14,4 +14,17 @@ public interface UserDao {
     public Apply selectApplyByID(String aid);
     public State selectStateByID(String sid);
     public int addNewApply(Apply apply);
+    /**
+     * 查询已经被授权记录
+     * @param uid
+     * @return list
+     */
+    public List<State> getAuditedState(String uid);
+
+    /**
+     * 查询未被授权记录
+     * @param uid
+     * @return list
+     */
+    public List<State> getUntreatedState(String uid);
 }

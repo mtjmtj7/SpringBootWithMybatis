@@ -75,4 +75,21 @@ public class UserService {
         else
             return false;
     }
+    /**
+     * 查询该用户已经被授权
+     * @param uid
+     * @return
+     */
+    public List<State> getAuditedState(String uid){
+        return userDao.getAuditedState(uid);
+    }
+
+    /**
+     * 查询该用户未被授权
+     * @param uid
+     * @return
+     */
+    public List<State> getUntreatedState(String uid){
+        return userDao.getUntreatedState(uid);
+    }
 }
