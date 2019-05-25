@@ -48,5 +48,22 @@ ___
       新建申请时，传入apply，此时需要用到session中的userNow对象来获取uid。
    
       在创建apply时需要创建一个状态state，而state表中需要用到applyid，此时发现mybatis一个巨好用的方法，因为刚才插入了一个apply，此时直接apply.getApplyid()即可获取刚才插入的记录的ID。
-   
-      
+
+### 5.25更新 
+
+---
+
+1. 管理员查看授权
+
+   isgrant = 0 未授权
+
+   isgrant = 1 授权正常
+
+   isgrant = 2 不足15天
+
+   isgrant = 3 授权异常
+
+2. 批准授权
+
+   更新state
+
