@@ -14,14 +14,23 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+<<<<<<< HEAD
+import java.util.Random;
+=======
+>>>>>>> 810da5ebd5d1b7b53d60cedafb9d4409d3085c12
 
 @Service
 @Transactional
 public class UserService {
+<<<<<<< HEAD
+    @Autowired
+    private UserDao userDao;
+=======
 
     @Autowired
     private UserDao userDao;
 
+>>>>>>> 810da5ebd5d1b7b53d60cedafb9d4409d3085c12
     /**
      * 登录验证
      */
@@ -39,6 +48,38 @@ public class UserService {
     }
 
     /**
+<<<<<<< HEAD
+     * 查询该用户未被授权
+     * @param uid
+     * @return
+     */
+    public List<State> getUntreatedState(String uid){
+        return userDao.getUntreatedState(uid);
+    }
+
+    /**
+     * 查询该用户已经被授权
+     * @param uid
+     * @return
+     */
+    public List<State> getAuditedState(String uid){
+        return userDao.getAuditedState(uid);
+    }
+
+    /**
+     * 查询该用户过期授权
+     * @param uid
+     * @return
+     */
+    public List<State> getEndState(String uid){return userDao.getEndState(uid);}
+
+    public List<State> getRevoke(String uid){return userDao.getRevoke(uid);}
+
+
+
+    /**
+=======
+>>>>>>> 810da5ebd5d1b7b53d60cedafb9d4409d3085c12
      * 重新申请授权三个月
      * 修改授权状态为未授权
      * 修改apply起始时间
@@ -51,7 +92,10 @@ public class UserService {
         s.setSid(state.getSid());
         s.setIsgrant("0");
         int res1 = userDao.updateState(s);
+<<<<<<< HEAD
+=======
 
+>>>>>>> 810da5ebd5d1b7b53d60cedafb9d4409d3085c12
         //修改apply起始时间
         Apply apply = new Apply();
         String startTime = DateUtil.dateToSimpleStr(new Date());
@@ -66,7 +110,10 @@ public class UserService {
         c.setTime(date);
         c.add(Calendar.MONTH, 3);   //增加三个月
         String endTime = sf.format(c.getTime());
+<<<<<<< HEAD
+=======
 
+>>>>>>> 810da5ebd5d1b7b53d60cedafb9d4409d3085c12
         apply.setApplyid(s.getApplyid());
         apply.setGrantbegindate(startTime);
         apply.setGrantenddate(endTime);
@@ -76,6 +123,8 @@ public class UserService {
         else
             return false;
     }
+<<<<<<< HEAD
+=======
     /**
      * 查询该用户已经被授权
      * @param uid
@@ -93,6 +142,7 @@ public class UserService {
     public List<State> getUntreatedState(String uid){
         return userDao.getUntreatedState(uid);
     }
+>>>>>>> 810da5ebd5d1b7b53d60cedafb9d4409d3085c12
 
     /**
      * 添加新的申请
@@ -108,14 +158,24 @@ public class UserService {
         //apply
         //记得改
         //apply.setApplyername(userNow.getRealname());
+<<<<<<< HEAD
+
+        apply.setApplyername("用户公司" );
+=======
         apply.setApplyername("mtjmtj7");
+>>>>>>> 810da5ebd5d1b7b53d60cedafb9d4409d3085c12
         int ret1 = userDao.addNewApply(apply);
         //state
         State state = new State();
         state.setApplyid(apply.getApplyid());
         //记得改
         //state.setUid(userNow.getId());
+<<<<<<< HEAD
+
+        state.setUid("3");
+=======
         state.setUid("2");
+>>>>>>> 810da5ebd5d1b7b53d60cedafb9d4409d3085c12
         state.setIsgrant("0"); //未授权
         state.setIsdel("0"); //0是正常
         int ret2 = userDao.addNewState(state);
@@ -125,5 +185,8 @@ public class UserService {
             return false;
 
     }
+<<<<<<< HEAD
+=======
 
+>>>>>>> 810da5ebd5d1b7b53d60cedafb9d4409d3085c12
 }

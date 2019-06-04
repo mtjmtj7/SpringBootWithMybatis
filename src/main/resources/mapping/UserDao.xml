@@ -3,14 +3,48 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.am.dao.UserDao">
+<<<<<<< HEAD
+
+	<!-- 登陆 -->
+	<select id="login"  resultType="user" parameterType="user">
+		select * from user where username=#{username} and password=#{password}
+	</select>
+
+=======
 	<!-- 登陆 -->
 	<select id="login"  resultType="user" parameterType="user">
 		select * from user where uname=#{uname} and upassword=#{upassword}
 	</select>
+>>>>>>> 810da5ebd5d1b7b53d60cedafb9d4409d3085c12
 	<!-- 查询该用户所有授权记录 -->
 	<select id="getAllState"  resultMap="allState" parameterType="String">
 		select * from state where uid  = #{uid}
 	</select>
+<<<<<<< HEAD
+
+	<!-- 查询该用户未被授权记录 -->
+	<select id="getUntreatedState"  resultMap="allState" parameterType="String">
+		select * from state where uid  = #{uid} and isgrant=0
+	</select>
+
+	<!-- 查询该用户已经被授权记录 -->
+	<select id="getAuditedState"  resultMap="allState" parameterType="String">
+		select * from state where uid  = #{uid} and isgrant=1
+	</select>
+
+	<!-- 查询该用户到期授权记录 -->
+	<select id="getEndState"  resultMap="allState" parameterType="String">
+		select * from state where uid  = #{uid} and isgrant=2
+	</select>
+
+	<!-- 查询该用户异常授权记录 -->
+	<select id="getRevoke"  resultMap="allState" parameterType="String">
+		select * from state where uid  = #{uid} and isgrant=3
+	</select>
+
+
+	<resultMap type="state" id="allState">
+=======
 	<resultMap type="state" id="allState">
 		<id property="sid" column="sid"/>
 		<result property="applyid" column="applyid" />
@@ -63,6 +97,7 @@
 		select * from state where uid  = #{uid} and isgrant=0
 	</select>
 	<resultMap type="state" id="allUntreatedState">
+>>>>>>> 810da5ebd5d1b7b53d60cedafb9d4409d3085c12
 		<id property="sid" column="sid"/>
 		<result property="applyid" column="applyid" />
 		<result property="uid" column="uid" />
@@ -71,6 +106,14 @@
 		<result property="grantdate" column="grantdate" />
 		<result property="license" column="license" />
 		<result property="isdel" column="isdel" />
+<<<<<<< HEAD
+		<association property="userApplyDetail" select="cn.am.dao.UserDao.selectUserByID"  column="uid">
+		</association>
+		<association property="userRatifyDetail" select="cn.am.dao.UserDao.selectUserByID" column="aid">
+		</association>
+		<association property="applyDetail" select="cn.am.dao.UserDao.selectApplyByID" column="applyid">
+		</association>
+=======
 		<!--		申请人信息-->
 		<association property="userApplyDetail" select="cn.am.dao.UserDao.selectUserByID"
 					 column="uid">
@@ -84,6 +127,7 @@
 					 column="applyid">
 		</association>
 
+>>>>>>> 810da5ebd5d1b7b53d60cedafb9d4409d3085c12
 	</resultMap>
 	<!-- 按ID查询user -->
 	<select id="selectUserByID"  resultType="user" parameterType="String">

@@ -27,6 +27,14 @@ public class Apply {
     private String shopappnum;
     private String desktopinstancenum;
     private String desktopcon;
+<<<<<<< HEAD
+    private String applynote;
+
+    public String getApplynote() { return applynote; }
+
+    public void setApplynote(String applynote) { this.applynote = applynote; }
+=======
+>>>>>>> 810da5ebd5d1b7b53d60cedafb9d4409d3085c12
 
     public String getApplyid() {
         return applyid;
@@ -256,6 +264,10 @@ public class Apply {
                 ", shopappnum='" + shopappnum + '\'' +
                 ", desktopinstancenum='" + desktopinstancenum + '\'' +
                 ", desktopcon='" + desktopcon + '\'' +
+<<<<<<< HEAD
+                ", desktopcon='" + applynote + '\'' +
+=======
+>>>>>>> 810da5ebd5d1b7b53d60cedafb9d4409d3085c12
                 '}';
     }
 }

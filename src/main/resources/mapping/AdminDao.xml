@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
+<<<<<<< HEAD
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+=======
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+>>>>>>> 810da5ebd5d1b7b53d60cedafb9d4409d3085c12
 <mapper namespace="cn.am.dao.AdminDao">
 	<!--管理员 查询所有未授权 -->
 	<select id="getAllStateNotPass"  resultMap="allState">
@@ -11,6 +16,23 @@
 	<select id="getAllPassState"  resultMap="allState">
 		select * from state where isgrant = 1
 	</select>
+<<<<<<< HEAD
+	<!--管理员 查询所有过期授权 -->
+	<select id="getAllEndState"  resultMap="allState">
+		select * from state where isgrant = 2
+	</select>
+	<!--管理员 查询所有过期授权 -->
+	<select id="getAllNearEndState"  resultMap="allState">
+
+	</select>
+	<!--管理员 查询所有异常 未通过  过期state -->
+	<select id="getAllRevoke"  resultMap="allState">
+		select * from state where isgrant = 3
+	</select>
+
+
+
+=======
 	<!--管理员 查询所有不足15天 -->
 	<select id="getAllNearEndState"  resultMap="allState">
 		select * from state where isgrant = 2
@@ -19,6 +41,7 @@
 	<select id="getAllEndState"  resultMap="allState">
 		select * from state where isgrant = 3
 	</select>
+>>>>>>> 810da5ebd5d1b7b53d60cedafb9d4409d3085c12
 	<resultMap type="state" id="allState">
 		<id property="sid" column="sid"/>
 		<result property="applyid" column="applyid" />
